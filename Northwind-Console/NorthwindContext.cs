@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 
-namespace NorthwindConsole.Models
+namespace NorthwindConsole
 {
     public class NorthwindContext : DbContext
     {

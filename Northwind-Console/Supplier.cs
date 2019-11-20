@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace NorthwindConsole.Models
+namespace NorthwindConsole
 {
     public class Supplier
     {
