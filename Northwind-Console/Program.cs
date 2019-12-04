@@ -6,7 +6,7 @@ namespace NorthwindConsole
     {
         public static void Main(string[] args)
         {
-            var db = new NorthwindContext();
+            //var db = new NorthwindContext();
             var menu = true;
             while (menu)
             {
@@ -14,9 +14,10 @@ namespace NorthwindConsole
                                 + "1. Products\n"
                                 + "2. Categories\n"
                                 + "3. Exit");
-                int choice;
+                
                 var type = "";
-                int.TryParse(Console.ReadLine(), out choice);
+                int choice = int.Parse(Console.ReadLine());
+
                 switch (choice)
                 {
                     case 1: type = "Product";
@@ -28,6 +29,7 @@ namespace NorthwindConsole
                     default: Console.WriteLine("Enter a valid choice");
                         break;
                 }
+
                 if (type != "")
                 {
                     Console.WriteLine($"{type} Manager-\n_____________________\n"
@@ -35,7 +37,25 @@ namespace NorthwindConsole
                                     + $"2. Display {type}s\n"
                                     + $"3. Edit {type}"
                                     + "4. Exit");
-                    int.TryParse(Console.ReadLine(), out choice);
+                    choice = int.Parse(Console.ReadLine()); ;
+                    switch (choice)
+                    {
+                        case 1:
+                            if (type == "Product")
+                            {
+                                Console.WriteLine("P");
+                                Product p = new Product();
+                                Console.WriteLine("Enter Product Name:");
+                                p.ProductName = Console.ReadLine();
+                                Console.WriteLine("Quantity per Unit:");
+                                p.QuantityPerUnit = Console.ReadLine();
+                                Console.WriteLine("Unit Price:");
+                                double price;
+                                price = double.Parse(Console.ReadLine());
+                            }
+                            
+                            break;
+                    }
                 }
             }
         }
