@@ -17,20 +17,29 @@ namespace NorthwindConsole
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public void DeleteProduct(Product p)
         {
-            var odQuery=OrderDetails.Where(od => od.ProductID == p.ProductID);
-            foreach(OrderDetail od in odQuery)
+            var odQuery = OrderDetails.Where(od => od.ProductID == p.ProductID);
+            foreach (var item in odQuery)
             {
-                OrderDetails.Remove(od);
+                OrderDetails.Remove(item);
             }
             Products.Remove(p);
             SaveChanges();
+
         }
         public void DeleteCategory(Category c)
         {
-            var products = Products.Where(p => p.CategoryID == c.CategoryID);
-            foreach (Product p in products)
-            {
-                DeleteProduct(p);
+            if (Products.Any(p=>p.CategoryID == c.CategoryID)) {
+                var products = Products.Where(p => p.CategoryID == c.CategoryID);
+                var product = Products.Where(p => p.CategoryID == c.CategoryID).First();
+                var odQuery = OrderDetails.Where(od => od.ProductID == product.ProductID);
+                foreach (var item in odQuery) {
+                    OrderDetails.Remove(item);
+                }
+                foreach (Product p in products)
+                {
+                    p.CategoryID = null;
+                }
+                
             }
             Categories.Remove(c);
             SaveChanges();

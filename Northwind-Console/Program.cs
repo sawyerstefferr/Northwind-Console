@@ -115,7 +115,7 @@ namespace NorthwindConsole
                                     if(int.TryParse(Console.ReadLine(), out int disChoice) && disChoice<6 && disChoice>0)
                                     {
                                         var categoryID = 0;
-                                        if(disChoice == 3)
+                                        if(disChoice == 3 || disChoice == 4)
                                         {
                                             Console.WriteLine("Enter the Category ID for the category you want to view:");
                                             if (int.TryParse(Console.ReadLine(), out categoryID)) { }
@@ -321,7 +321,7 @@ namespace NorthwindConsole
                     var categoryName = "";
                     foreach (var item in query2)
                     {
-                        Console.WriteLine($"______________\n{item.CategoryName}~~\n");
+                        Console.WriteLine($"______________\n{item.CategoryID}- {item.CategoryName}~~\n");
                         foreach (Product p in item.Products)
                         {
                             if(!p.Discontinued) Console.WriteLine($"\t{p.ProductID}- {p.ProductName}");
@@ -356,6 +356,6 @@ namespace NorthwindConsole
             Console.WriteLine("Enter a description for the Category:");
             c.Description = Console.ReadLine();
         }
-
+       
     }
 }
