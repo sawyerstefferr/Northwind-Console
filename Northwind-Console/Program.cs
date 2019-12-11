@@ -2,6 +2,9 @@
 using System.Linq;
 namespace NorthwindConsole
 {
+
+    //https://youtu.be/vfAEiPlZgDA Link to the video of the program
+
     class Program
     {
         public static void Main(string[] args)
